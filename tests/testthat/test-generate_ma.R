@@ -5,8 +5,10 @@ test_that("genMA returns the correct number of studies", {
 })
 
 test_that("genMA returns the correct number of participants per study", {
-  expect_equal(length(genMA(1,0,0,0)[[1,'s']][[1]]), 0)
-  expect_equal(length(genMA(1,0,0,10)[[1,'s']][[1]]), 10)
+  n=0
+  expect_equal(length(genMA(1,0,0,n)[[1,'s']][[1]]), 2*n)
+  n=10
+  expect_equal(length(genMA(1,0,0,n)[[1,'s']][[1]]), 2*n)
 })
 
 

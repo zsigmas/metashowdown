@@ -12,6 +12,8 @@ genMA(k, delta, tau, fixed.n = NULL)
 \item{delta}{true effect of the studies}
 
 \item{tau}{the SD around the true effect}
+
+\item{fixed.n}{number of participants *PER GROUP* (groups are always balanced), if null it is extracted from a distribution (see getN)}
 }
 \description{
 Generate a single group of metanalyses with the maximum number of participants

@@ -3,6 +3,7 @@
 #' @param k number of studies in the metanalysis
 #' @param delta true effect of the studies
 #' @param tau the SD around the true effect
+#' @param fixed.n number of participants *PER GROUP* (groups are always balanced), if null it is extracted from a distribution (see getN)
 #'
 #' @export
 
@@ -14,7 +15,7 @@ genMA <- function(k, delta, tau, fixed.n = NULL) {
   }
 
   t <- tibble(ns=ns, opt_delta=delta, opt_tau=tau, emp_tau = rnorm(k, 0, tau), emp_delta = opt_delta + emp_tau)
-  t <- mutate(t, s = mapply(function(x,emp_delta){rnorm(x, mean=emp_delta)}, x=ns, emp_delta=emp_delta, SIMPLIFY = F))
+  t <- mutate(t, s = mapply(function(x,emp_delta){rnorm(2*x, mean=emp_delta)}, x=ns, emp_delta=emp_delta, SIMPLIFY = F))
   return(t)
 }
 
