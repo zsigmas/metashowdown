@@ -12,5 +12,11 @@ LazyData: true
 Suggests: 
     testthat
 Imports: 
-    invgamma
+    invgamma,
+    dplyr,
+    magrittr,
+    tibble,
+    tidyr,
+    truncdist,
+    logging
 RoxygenNote: 7.1.0

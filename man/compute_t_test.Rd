@@ -7,11 +7,9 @@
 compute_t_test(study, tails = 1)
 }
 \arguments{
-\item{study}{a study with one of the samples}
+\item{study}{a vector representing a study with 2n entries, n for each of the groups}
 
-\item{tails}{number of tails}
-
-\item{alpha}{alpha of the test}
+\item{tails}{number of tails (TODO)}
 }
 \description{
 We don't use the one by R to speed up the computation, it only computes the alternative of the difference being greater than 0 (i.e. one-tailed)

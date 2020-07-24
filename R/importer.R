@@ -3,6 +3,7 @@
 #' @import tibble
 #' @import truncdist
 #' @import tidyr
+#' @import logging
 #' @importFrom magrittr %>%
 #' @name %>%
 #' @rdname pipe
@@ -11,3 +12,4 @@
 #' @examples
 
 NULL
+

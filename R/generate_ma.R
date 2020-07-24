@@ -3,12 +3,12 @@
 #' @param k number of studies in the metanalysis
 #' @param delta true effect of the studies
 #' @param tau the SD around the true effect
-#' @param fixed.n number of participants *PER GROUP* (groups are always balanced), if null it is extracted from a distribution (see getN)
+#' @param fixed.n number of participants *PER GROUP* (groups are always balanced), if NA it is extracted from a distribution (see getN)
 #'
 #' @export
 
-genMA <- function(k, delta, tau, fixed.n = NULL) {
-  if(is.null(fixed.n)){
+genMA <- function(k, delta, tau, fixed.n = NA) {
+  if(is.na(fixed.n)){
     ns <- getN(k)
   }else{
     ns <- rep(fixed.n, k)
