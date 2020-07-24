@@ -32,7 +32,7 @@ compute_t_test <- function(study, tails=1){
 
   d = compute_power(m1, m2, n1, n2, v1, v2, df)
 
-  return(list(p=p,t=t, d=d))
+  return(list(p=p,t=t, d=d, df=df))
 }
 
 

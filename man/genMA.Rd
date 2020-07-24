@@ -4,7 +4,7 @@
 \alias{genMA}
 \title{Generate a single group of metanalyses with the maximum number of participants}
 \usage{
-genMA(k, delta, tau, fixed.n = NULL)
+genMA(k, delta, tau, fixed.n = NA)
 }
 \arguments{
 \item{k}{number of studies in the metanalysis}
@@ -13,7 +13,7 @@ genMA(k, delta, tau, fixed.n = NULL)
 
 \item{tau}{the SD around the true effect}
 
-\item{fixed.n}{number of participants *PER GROUP* (groups are always balanced), if null it is extracted from a distribution (see getN)}
+\item{fixed.n}{number of participants *PER GROUP* (groups are always balanced), if NA it is extracted from a distribution (see getN)}
 }
 \description{
 Generate a single group of metanalyses with the maximum number of participants

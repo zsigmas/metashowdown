@@ -9,7 +9,7 @@ run_simulation(param_df, production = T)
 \arguments{
 \item{param_df, }{dataframe containing the parameters to call simulate_oneMA}
 
-\item{production}{a boolean flag to disthinguish when  we are in production or testing mode}
+\item{production}{a boolean flag to disthinguish when we are in production or testing mode}
 }
 \description{
 Main simulation call

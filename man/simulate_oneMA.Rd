@@ -4,16 +4,7 @@
 \alias{simulate_oneMA}
 \title{Simulate one MA}
 \usage{
-simulate_oneMA(
-  k,
-  delta,
-  tau,
-  qrpEnv = c("none", "low", "medium", "high"),
-  censorFunc = c("none", "medium", "high"),
-  verbose = FALSE,
-  fixed.n = NULL,
-  seq_t = list(pr, seq_param)
-)
+simulate_oneMA(k, delta, tau, fixed.n = NA, id = NA)
 }
 \arguments{
 \item{k}{the number of studies in the MA}
@@ -22,11 +13,15 @@ simulate_oneMA(
 
 \item{tau}{the SD around the true effect}
 
+\item{fixed.n}{number of participants *PER GROUP* (groups are always balanced), if NA it is extracted from a distribution (see getN)}
+
+\item{id}{an optional numerical id for the metanalysis, by default NA}
+
+\item{censor}{The censoring function - either "none", "med" (medium publication bias), "high" (high publication bias), or a vector of 3 values for the censoring function (posSign_NS_baseRate, negSign_NS_baseRate, counterSig_rate) *NOT SUPPORTED*}
+
 \item{qrpEnv}{the qrp environment that produced the literature: 'none', 'low', 'med', 'high'  *NOT SUPPORTED*}
 
 \item{seq_t}{A list with a field called pr, which contains which proportion of the studies in the metanalisys used a sequential analisys technique and, a seq param df with two fields, pv the critical p value of each peeking and pr the proportion of observations of each peek. *NOT SUPPORTED*}
-
-\item{censor}{The censoring function - either "none", "med" (medium publication bias), "high" (high publication bias), or a vector of 3 values for the censoring function (posSign_NS_baseRate, negSign_NS_baseRate, counterSig_rate) *NOT SUPPORTED*}
 }
 \description{
 Simulate one MA

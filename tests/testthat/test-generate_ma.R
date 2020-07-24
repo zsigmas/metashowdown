@@ -1,7 +1,10 @@
 test_that("genMA returns the correct number of studies", {
-  expect_equal(nrow(genMA(0,0,0)), 0)
-  expect_equal(nrow(genMA(1,0,0)), 1)
-  expect_equal(nrow(genMA(10,0,0)), 10)
+  expect_equal(nrow(genMA(0,0,0,3)), 0)
+  expect_equal(nrow(genMA(1,0,0,3)), 1)
+  expect_equal(nrow(genMA(10,0,0,3)), 10)
+  expect_equal(nrow(genMA(0,0,0,NA)), 0)
+  expect_equal(nrow(genMA(1,0,0,NA)), 1)
+  expect_equal(nrow(genMA(10,0,0,NA)), 10)
 })
 
 test_that("genMA returns the correct number of participants per study", {
