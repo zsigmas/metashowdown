@@ -14,9 +14,11 @@ run_simulation <- function(param_df, production = T) {
                          tau=param_df[['tau']],
                          fixed.n = param_df[['fixed.n']],
                          id = 1:nrow(param_df),
+                         MoreArgs = list(drop_sample=T),
                          SIMPLIFY = F
   ))
-  loginfo('Finalizando simulación', logger='run_simulation')
+
+  return(r)
 }
 
 
@@ -30,6 +32,7 @@ run_simulation <- function(param_df, production = T) {
 #' @param qrpEnv the qrp environment that produced the literature: 'none', 'low', 'med', 'high'  *NOT SUPPORTED*
 #' @param seq_t A list with a field called pr, which contains which proportion of the studies in the metanalisys used a sequential analisys technique and, a seq param df with two fields, pv the critical p value of each peeking and pr the proportion of observations of each peek. *NOT SUPPORTED*
 #' @param id an optional numerical id for the metanalysis, by default NA
+#' @param drop_sample an optional flag to drop or retain the sample in each study
 #'
 #'
 #' @export
@@ -41,10 +44,13 @@ simulate_oneMA <- function(k, delta, tau,
                            #verbose = FALSE,
                            fixed.n = NA,
                            #seq_t = list(pr, seq_param)
-                           id=NA
+                           id=NA,
+                           drop_sample=F
 ){
 
-  logdebug(glue::glue('Parameters: {params}', params=list2str(list(k=k,delta=delta,tau=tau,fixed.n=fixed.n))),
+  logdebug(glue::glue('Parameters: {params}', params=list2str(list(k=k,delta=delta,
+                                                                   tau=tau,fixed.n=fixed.n,
+                                                                   drop_sample=drop_sample))),
            logger='simulate_oneMA')
 
   logdebug('Generating MA studies')
@@ -53,6 +59,10 @@ simulate_oneMA <- function(k, delta, tau,
   stat_type = 't_test'
 
   r <- run_stats(this_MA, stat_type)
+
+  if(drop_sample){
+    logdebug('Dropping Sample')
+    r <- select(r, -s)} #Drop sample information
 
   r <- mutate(r, id=id)
 
@@ -90,5 +100,5 @@ run_stats <- function(ma_df, stat_type=c('t_test')){
 run_t_test <- function(ma_df) {
   logdebug('Running single_t_test',
            logger='run_t_test')
-  mutate(ma_df, r = (lapply(s, function(y){compute_t_test(y)}))) %>% unnest_wider(r) %>% select(-s)
+  mutate(ma_df, r = (lapply(s, function(y){compute_t_test(y)}))) %>% unnest_wider(r)
 }

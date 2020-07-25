@@ -1,4 +1,4 @@
-#' @import stats
+# @import stats # Do not import yet this is not gonna be a CRAN
 #' @import dplyr
 #' @import tibble
 #' @import truncdist

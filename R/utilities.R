@@ -62,3 +62,5 @@ set_verbose <- function(verbose=F) {
     logging::basicConfig(level=logging::loglevels['INFO'])
   }
 }
+
+
