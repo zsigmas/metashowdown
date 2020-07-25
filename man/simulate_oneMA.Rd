@@ -4,7 +4,17 @@
 \alias{simulate_oneMA}
 \title{Simulate one MA}
 \usage{
-simulate_oneMA(k, delta, tau, fixed.n = NA, id = NA)
+simulate_oneMA(
+  k,
+  delta,
+  tau,
+  fixed.n = NA,
+  weight_stat,
+  seq_prop_stop = NA,
+  seq_alpha_stop = NA,
+  id = NA,
+  drop_sample = F
+)
 }
 \arguments{
 \item{k}{the number of studies in the MA}
@@ -15,13 +25,19 @@ simulate_oneMA(k, delta, tau, fixed.n = NA, id = NA)
 
 \item{fixed.n}{number of participants *PER GROUP* (groups are always balanced), if NA it is extracted from a distribution (see getN)}
 
+\item{seq_prop_stop}{a vector with the proportions at which we will peek in the case of a sequential t test (Single value)}
+
 \item{id}{an optional numerical id for the metanalysis, by default NA}
+
+\item{drop_sample}{an optional flag to drop or retain the sample in each study}
 
 \item{censor}{The censoring function - either "none", "med" (medium publication bias), "high" (high publication bias), or a vector of 3 values for the censoring function (posSign_NS_baseRate, negSign_NS_baseRate, counterSig_rate) *NOT SUPPORTED*}
 
 \item{qrpEnv}{the qrp environment that produced the literature: 'none', 'low', 'med', 'high'  *NOT SUPPORTED*}
 
 \item{seq_t}{A list with a field called pr, which contains which proportion of the studies in the metanalisys used a sequential analisys technique and, a seq param df with two fields, pv the critical p value of each peeking and pr the proportion of observations of each peek. *NOT SUPPORTED*}
+
+\item{seq_prop_alpha}{a vector with the critical alpha value at each peek in the case of a sequential t test (Single Value)}
 }
 \description{
 Simulate one MA

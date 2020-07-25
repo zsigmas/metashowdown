@@ -50,3 +50,45 @@ compute_power <- function(m1, m2, n1, n2, v1, v2, df) {
   d  <-  (m1-m2)/sqrt(((n1 - 1) * v1 + (n2 - 1) * v2) / df)
 }
 
+
+#' Compute a sequential t-test with a pre specified number of stops and a given alpha
+#'
+#' @param study a vector representing a study with 2n entries, n for each of the groups
+#' @param prop_stop at which proportion of all data will we peek
+#' @param alpha_stop alpha in each of the peeks
+#'
+#' In case the proportion goes below one it automatically chooses one more
+#'
+#' @export
+
+compute_seq_t_test <- function(study, prop_stop, alpha_stop){
+
+  logdebug('Computing Sequential t test', logger = 'compute_seq_t_test')
+
+  n1 <-  length(study)/2
+  n2 <-  n1
+
+  logdebug(glue::glue('Size per group total:{length(study)}, n1:{n1}, n2:{n2}'), logger = 'compute_seq_t_test')
+
+  for(i in 1:length(prop_stop)){
+    beg1 <- 1
+    beg2 <- (n1+1)
+    end1 <- max(2,round(n1*prop_stop[i])) # Max to avoid picking just one subject
+    end2 <- beg2 + max(2, round(n2*prop_stop[i])) - 1 # Otherwise we take one extra #Max same as above
+    this_study <- c(study[beg1:end1],study[beg2:end2])
+    r <- compute_t_test(this_study)
+
+    logdebug(glue::glue('{i} stop'), logger = 'compute_seq_t_test')
+    logdebug(glue::glue('Group1 [{beg1}:{end1}]'), logger = 'compute_seq_t_test')
+    logdebug(glue::glue('Group1 [{beg2}:{end2}]'), logger = 'compute_seq_t_test')
+    logdebug(glue::glue('Result p:{r$p}, d:{r$d}, df:{r$df}, prop:{prop_stop[i]}'), logger = 'compute_seq_t_test')
+
+
+    if(r$p<alpha_stop[i]){
+      break
+    }
+  }
+
+  return(c(r, prop=prop_stop[i]))
+}
+

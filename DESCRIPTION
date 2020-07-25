@@ -20,5 +20,7 @@ Imports:
     tidyr,
     truncdist,
     logging,
-    stats
+    stats,
+    assertthat,
+    purrr
 RoxygenNote: 7.1.0

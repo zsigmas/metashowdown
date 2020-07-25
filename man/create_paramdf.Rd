@@ -4,7 +4,15 @@
 \alias{create_paramdf}
 \title{Create a parameter dataframe}
 \usage{
-create_paramdf(k, delta, tau, fixed.n)
+create_paramdf(
+  k,
+  delta,
+  tau,
+  fixed.n,
+  weight_stat,
+  seq_prop_stop,
+  seq_alpha_stop
+)
 }
 \arguments{
 \item{k}{the number of studies in the MA (NULL if you w)}
@@ -12,6 +20,12 @@ create_paramdf(k, delta, tau, fixed.n)
 \item{delta}{the true effect (or the average of the true effects if heterogeneity exists)}
 
 \item{tau}{the SD around the true effect}
+
+\item{seq_prop_stop}{proportion at each peek, pass as vector inside list list(c(1,2,3), c(3,2,4))}
+
+\item{seq_alpha_stop}{criticial alpha at each peek, pass as vector inside list list(c(1,2,3), c(3,2,4))}
+
+\item{weigth_stat}{probability of each type, pass as vector inside list list(c(1,2,3), c(3,2,4))}
 }
 \description{
 Create a parameter dataframe

@@ -12,3 +12,10 @@ test_that("t-test power", {
 
 })
 
+test_check("sequential t test",{
+  #TODO check p values with proportion returned
+  #TODO check proportion 0 and 1
+  #TODO check differents sizes
+  #TODO check with an effect size it should stop early
+})
+

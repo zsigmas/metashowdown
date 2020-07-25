@@ -1,6 +1,4 @@
-test_that("run simulation", {
-
-  #TODO Create one data from which we know the results and work from there (Maybe fix the random seed)
+test_that("run simulation (integration)", {
 
   param_df <- dummy_paramdf()
 
@@ -106,6 +104,18 @@ test_that("run_stat", {
   }
 })
 
+test_that("assign_stat",
+          {
 
+            #TODO check proportions
+            #TODO check correct asignment
+            #TODO check error when asked for Bayesian
+
+          })
+
+test_that('run sequential t-test',{
+  #TODO check all values are returned
+  #TODO check akin to the other run t-test
+})
 
 

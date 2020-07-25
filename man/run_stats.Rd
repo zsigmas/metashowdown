@@ -4,12 +4,10 @@
 \alias{run_stats}
 \title{Run stats on each study}
 \usage{
-run_stats(ma_df, stat_type = c("t_test"))
+run_stats(ma_df_stat)
 }
 \arguments{
-\item{ma_df}{ma_df over which we want to apply the stats}
-
-\item{stat_type}{type of stats we want to apply c=('t_test')}
+\item{ma_df_stat}{list of studies in the metanalysis with their stat assigned}
 }
 \description{
 Run stats on each study

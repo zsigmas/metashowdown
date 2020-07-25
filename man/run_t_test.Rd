@@ -2,7 +2,7 @@
 % Please edit documentation in R/simulations.R
 \name{run_t_test}
 \alias{run_t_test}
-\title{Run the test for all the studies in a single metaanalysis}
+\title{Run the t-test for the studies in the dataframe}
 \usage{
 run_t_test(ma_df)
 }
@@ -10,5 +10,5 @@ run_t_test(ma_df)
 \item{ma_df}{dataframe containing the metanalysis}
 }
 \description{
-Run the test for all the studies in a single metaanalysis
+Run the t-test for the studies in the dataframe
 }
